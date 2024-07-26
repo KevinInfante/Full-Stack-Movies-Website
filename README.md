@@ -27,5 +27,3 @@ Gif:
 
 Imgur link: https://imgur.com/a/PlQD5cH 
 
-Final Project Demo:
-https://youtu.be/KCS8O4h9Bsg
