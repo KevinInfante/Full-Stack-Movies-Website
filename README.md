@@ -9,7 +9,7 @@ https://final-project-frontend-group6.herokuapp.com/
 ## Set up instructions
 The user must clone the repo, and make a config.js file in the backend directory that exports their tmdb api key. For example:
 
-![example config.js file](https://github.com/cop4808-spring-2023-fullstack-web/final-project-Group-6/blob/main/frontend2/movie-app/public/config_example.jpg?raw=true)
+![example config.js file](https://github.com/KevinInfante/Full-Stack-Movies/blob/main/frontend2/movie-app/public/config_example.jpg?raw=true)
 
 Then, the user must include a json file named "./hw11-c04ee-firebase-adminsdk-24c14-f3334f505b.json" in the backend directory:
 ![example ./hw11-c04ee-firebase-adminsdk-24c14-f3334f505b.json file](https://github.com/cop4808-spring-2023-fullstack-web/final-project-Group-6/blob/main/frontend2/movie-app/public/firebase_example.jpg?raw=true)
