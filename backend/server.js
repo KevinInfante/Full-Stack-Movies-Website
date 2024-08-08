@@ -9,12 +9,20 @@ const apiKey = config.server.apiKey;
 const axios = require("axios");
 const {MongoClient} = require("mongodb");
 const app = express();
-const serviceAccount = process.env.FIREBASE_ADMIN ? JSON.parse(process.env.FIREBASE_ADMIN) : require("./hw11-c04ee-firebase-adminsdk-24c14-f3334f505b.json");
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
-});
+//const serviceAccount = process.env.FIREBASE_ADMIN ? JSON.parse(process.env.FIREBASE_ADMIN) : require("./hw11-c04ee-firebase-adminsdk-24c14-f3334f505b.json");
+const firebaseConfig = require("./firebaseCon.js")
+admin.initializeApp(firebaseConfig);
+
+console.log("fire api key: ", firebaseConfig.apiKey);
 
 
+//added 7/26/24
+const path = require('path');
+const _dirname = path.dirname("");
+const buildPath = path.join(__dirname, "../frontend2/movie-app/build/index.html");
+console.log("path: ",__dirname);
+console.log("path2: ", buildPath);
+//firebase console: https://console.firebase.google.com/u/0/project/hw11-db521/authentication/users
 
 
 app.use(bodyParser.json());
@@ -26,7 +34,7 @@ app.use((req, res, next) => { //this is necessary for the axios call from the fr
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,Content-type');
     next();
   });
-app.use(express.static('./public'));
+app.use(express.static(path.resolve(__dirname, '../frontend2/movie-app/build')));
 
 
 //connect
@@ -42,7 +50,8 @@ MongoClient.connect(uri, {useUnifiedTopology: true}, function(err, client){
 })
 
 app.get("/", (req, res) => {
-    res.send(process.env.FIREBASE_ADMIN);
+    //res.send(process.env.FIREBASE_ADMIN); //commented out 7/26/24
+    res.sendFile(path.resolve(__dirname, '../frontend2/movie-app/build','index.html'));
 });
 
 /**
